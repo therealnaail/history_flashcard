@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <head>
+    <title>Revisionline</title>
+    <style>
+       /* Define styles for the header and footer */
+       header {
+         background-color: grey;
+         color: teal;
+         padding: 10px;
+         text-align: center;
+         font-family: 'Open Sans', sans-serif;
+         padding-left: 15px;
+       }
+       footer {
+         background-color: grey;
+         color: lightblue;
+         padding: 10px;
+         text-align: center;
+         font-family: 'Open Sans', sans-serif;
+         padding-left: 15px;
+       }
+
+       /* Define styles for the menu buttons */
+       .menu-button {
+         background-color: grey;
+         color: lightblue;
+         padding: 10px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         margin-right: 0px;
+         font-family: 'Open Sans', sans-serif;
+         list-style-type: none;
+         position: relative;
+         display: inline-flex;
+         align-items: center;
+}
+.menu-button ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background-color: grey;
+  z-index: 1;
+}
+.menu-button:hover ul {
+  display: inline-block;
+}
+.menu-button li {
+  margin: 0;
+  padding: 5px;
+  list-style-type: none;
+}
+
+/* Define styles for the main content */
+.main-content {
+  background-color: white;
+  padding: 0px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+       .contact-button {
+         display: inline-block;
+         padding: 10px 20px;
+         font-size: 18px;
+         font-weight: bold;
+         text-decoration: none;
+         color: white;
+         background-color: teal;
+         border-radius: 5px;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+       }
+       #flashcard {
+        border: 1px solid black;
+        text-align: center;
+        padding: 40px 20px 20px 20px !important;
+        margin: 20px;
+        width: 600px;
+        height: 400px;
+        text-align: center;
+        font-size: 20px;
+        margin: 0 auto;
+       background-color: lightblue;
+       display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid black;
+      }
+      .next-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+     </style>
+  </head>
+  <body>
+    <header>
+   <img src="logo.png">
+   <div>
+    <div class="main-content">
+        <h1> GCSE History Revision: Flashcards </h1>
+    <div id="flashcard">
+           <div id="question"></div>
+           <div id="answer" style="display: none;"></div>
+         </div>
+         <button id="next-button" onclick="showNext()">Next</button>
+         <button id="back-button">Back</button>
+
+         <script>
+         const flashcards = [
+{
+question: "What was the Treaty of Versailles?",
+answer: "The Treaty of Versailles was the peace settlement signed after World War I that ended the state of war between Germany and the Allied Powers."
+},
+{
+question: "When was the Treaty of Versailles signed?",
+answer: "The Treaty of Versailles was signed on June 28, 1919."
+},
+{
+question: "What were the main terms of the Treaty of Versailles?",
+answer: "The main terms of the Treaty of Versailles included Germany's disarmament, payment of reparations to the Allied Powers, and the cession of territories to France, Poland, and Czechoslovakia."
+},
+{
+question: "What was the League of Nations?",
+answer: "The League of Nations was an international organization established after World War I to promote international cooperation and prevent future wars."
+},
+{
+question: "When was the League of Nations established?",
+answer: "The League of Nations was established on January 10, 1920."
+},
+{
+question: "What was the Dawes Plan?",
+answer: "The Dawes Plan was a plan devised in 1924 to help Germany pay off its reparations debt to the Allied Powers by providing it with loans from American banks."
+},
+{
+question: "What was the Locarno Pact?",
+answer: "The Locarno Pact was a series of agreements signed in 1925 that guaranteed Germany's western borders with France and Belgium and facilitated Germany's admission to the League of Nations."
+},
+{
+question: "What was the Kellogg-Briand Pact?",
+answer: "The Kellogg-Briand Pact was an international agreement signed in 1928 that renounced war as an instrument of national policy."
+},
+{
+question: "What was the Young Plan?",
+answer: "The Young Plan was a plan devised in 1929 to reduce Germany's reparations debt to the Allied Powers by extending the payment period and reducing the annual amount."
+},
+{
+question: "What was the Great Depression?",
+answer: "The Great Depression was a severe economic downturn that began in 1929 and lasted throughout the 1930s."
+},
+{
+question: "What was the Stresa Front?",
+answer: "The Stresa Front was an agreement signed in 1935 by Britain, France, and Italy to oppose Hitler's rearmament and expansionist policies."
+},
+{
+question: "What was the Abyssinian Crisis?",
+answer: "The Abyssinian Crisis was a diplomatic crisis that arose in 1935 when Italy invaded Abyssinia (now Ethiopia), violating the League of Nations' covenant and undermining collective security."
+},
+{
+question: "What was the Rome-Berlin Axis?",
+answer: "The Rome-Berlin Axis was a political and military alliance signed in 1936 between Italy and Germany, cementing the two countries' cooperation and ideological affinity."
+},
+{
+question: "What was the Spanish Civil War?",
+answer: "The Spanish Civil War was a conflict that erupted in 1936 between the democratically elected Republican government and the Nationalist rebels led by General Francisco Franco, who was supported by Germany and Italy."
+},
+{
+question: "What was the Munich Agreement?",
+answer: "The Munich Agreement was an agreement signed in 1938 by Britain, France, Italy, and Germany that allowed Germany to annex the Sudetenland region of Czechoslovakia, appeasing Hitler's demands and violating Czechoslovakia's sovereignty."
+},
+{
+question: "What was the Nazi-Soviet Pact?",
+answer: "The Nazi-Soviet Pact was a non-aggression treaty signed in 1939 between Germany and the Soviet Union, which also contained secret protocols that divided Eastern Europe into spheres of influence."
+},
+{
+question: "What was the invasion of Poland?",
+answer: "The invasion of Poland was a military campaign launched by Germany on September 1, 1939, which marked the beginning of World War II."
+},
+{
+question: "What was the Anschluss?",
+answer: "The Anschluss was the annexation of Austria by Germany in March 1938, violating the Treaty of Versailles and marking a significant step in Hitler's expansionist policies."
+},
+{
+question: "What was the Munich Crisis?",
+answer: "The Munich Crisis was a diplomatic crisis that arose in 1938 over Hitler's demands to annex the Sudetenland region of Czechoslovakia, which culminated in the signing of the Munich Agreement."
+},
+{
+question: "What was the Rhineland crisis?",
+answer: "The Rhineland crisis was a diplomatic crisis that arose in 1936 when Hitler ordered the German army to reoccupy the demilitarized Rhineland region, violating the Treaty of Versailles and challenging the Western powers' resolve."
+},
+{
+question: "What was the Four-Power Pact?",
+answer: "The Four-Power Pact was a treaty signed in 1933 by Britain, France, Japan, and the United States to promote naval disarmament and cooperation"},
+{
+question: "What was the Roaring Twenties?",
+answer: "The Roaring Twenties was a period of economic prosperity and cultural change in the United States during the 1920s, characterized by a booming economy, mass consumerism, and social liberation."
+},
+{
+question: "What was Prohibition?",
+answer: "Prohibition was a nationwide constitutional ban on the production, sale, and transportation of alcohol in the United States from 1920 to 1933, enacted in an effort to reduce crime, poverty, and social problems associated with alcohol consumption."
+},
+{
+question: "What was the Red Scare?",
+answer: "The Red Scare was a period of political and social paranoia in the United States during the 1920s, fueled by fear of communist infiltration and subversion, which led to widespread persecution and suppression of leftist political movements and individuals."
+},
+{
+question: "What was the Wall Street Crash?",
+answer: "The Wall Street Crash was a catastrophic stock market crash that occurred in 1929, leading to the collapse of the American economy and the onset of the Great Depression."
+},
+{
+question: "What was the Great Depression?",
+answer: "The Great Depression was a severe economic downturn that began in 1929 and lasted throughout the 1930s, characterized by high unemployment, poverty, and social unrest."
+},
+{
+question: "What was the New Deal?",
+answer: "The New Deal was a series of sweeping economic and social reforms enacted by President Franklin D. Roosevelt in response to the Great Depression, aimed at providing relief, recovery, and reform to the American people."
+},
+{
+question: "What was the Federal Emergency Relief Administration?",
+answer: "The Federal Emergency Relief Administration was a federal agency established by President Roosevelt in 1933 to provide direct relief to the unemployed and needy during the Great Depression."
+},
+{
+question: "What was the Civilian Conservation Corps?",
+answer: "The Civilian Conservation Corps was a public work relief program established by President Roosevelt in 1933 to provide employment and environmental conservation to young men during the Great Depression."
+},
+{
+question: "What was the National Recovery Administration?",
+answer: "The National Recovery Administration was a federal agency established by President Roosevelt in 1933 to promote economic recovery and industrial reform through voluntary codes of fair competition and labor standards."
+},
+{
+question: "What was the Tennessee Valley Authority?",
+answer: "The Tennessee Valley Authority was a federal agency established by President Roosevelt in 1933 to provide economic development and public works to the impoverished Tennessee Valley region through the construction of dams and hydroelectric power plants."
+},
+{
+question: "What was the Social Security Act?",
+answer: "The Social Security Act was a federal law enacted by President Roosevelt in 1935, which created a system of old-age pensions, unemployment insurance, and aid to dependent children, marking a significant expansion of the American welfare state."
+},
+{
+question: "What was the Works Progress Administration?",
+answer: "The Works Progress Administration was a federal agency established by President Roosevelt in 1935 to provide employment and public works to millions of unemployed Americans during the Great Depression."
+},
+{
+question: "What was the Dust Bowl?",
+answer: "The Dust Bowl was a period of severe dust storms and ecological devastation that occurred in the Great Plains region of the United States during the 1930s, exacerbated by drought, over-farming, and poor soil conservation practices."
+}
+         ];
+
+         let currentFlashcardIndex = 0;
+const flashcardElement = document.getElementById("flashcard");
+const questionElement = document.getElementById("question");
+const answerElement = document.getElementById("answer");
+
+function showNext() {
+currentFlashcardIndex++;
+if (currentFlashcardIndex >= flashcards.length) {
+  currentFlashcardIndex = 0;
+}
+questionElement.innerText = flashcards[currentFlashcardIndex].question;
+answerElement.innerText = flashcards[currentFlashcardIndex].answer;
+answerElement.style.display = "none";
+}
+
+function showPrevious() {
+currentFlashcardIndex--;
+if (currentFlashcardIndex < 0) {
+  currentFlashcardIndex = flashcards.length - 1;
+}
+questionElement.innerText = flashcards[currentFlashcardIndex].question;
+answerElement.innerText = flashcards[currentFlashcardIndex].answer;
+answerElement.style.display = "none";
+}
+
+flashcardElement.addEventListener("click", function() {
+answerElement.style.display = "block";
+});
+
+const backButtonElement = document.getElementById("back-button");
+backButtonElement.addEventListener("click", showPrevious);
+
+showNext();
+         </script>
+       </body>
+<footer> © 2023 Revisionline, All rights reserved.&nbsp;&nbsp;&nbsp;<a href="mailto:info@revisionline.co.uk" class="contact-button">E- mail</a></footer>
+</html>
