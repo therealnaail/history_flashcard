@@ -122,9 +122,8 @@ body {
            <div id="question"></div>
            <div id="answer" style="display: none;"></div>
          </div>
+          <button id="back-button">Back</button>
          <button id="next-button" onclick="showNext()">Next</button>
-         <button id="back-button">Back</button>
-
          <script>
          const flashcards = [
 {
@@ -265,38 +264,47 @@ answer: "The Dust Bowl was a period of severe dust storms and ecological devasta
          ];
 
          let currentFlashcardIndex = 0;
-const flashcardElement = document.getElementById("flashcard");
-const questionElement = document.getElementById("question");
-const answerElement = document.getElementById("answer");
+       const flashcardElement = document.getElementById("flashcard");
+       const questionElement = document.getElementById("question");
+       const answerElement = document.getElementById("answer");
 
-function showNext() {
-currentFlashcardIndex++;
-if (currentFlashcardIndex >= flashcards.length) {
-  currentFlashcardIndex = 0;
-}
-questionElement.innerText = flashcards[currentFlashcardIndex].question;
-answerElement.innerText = flashcards[currentFlashcardIndex].answer;
-answerElement.style.display = "none";
-}
+       function showNext() {
+         currentFlashcardIndex++;
+         if (currentFlashcardIndex >= flashcards.length) {
+           currentFlashcardIndex = 0;
+         }
+         questionElement.innerText = flashcards[currentFlashcardIndex].question;
+         answerElement.innerText = flashcards[currentFlashcardIndex].answer;
+         answerElement.style.display = "none";
+       }
 
-function showPrevious() {
-currentFlashcardIndex--;
-if (currentFlashcardIndex < 0) {
-  currentFlashcardIndex = flashcards.length - 1;
-}
-questionElement.innerText = flashcards[currentFlashcardIndex].question;
-answerElement.innerText = flashcards[currentFlashcardIndex].answer;
-answerElement.style.display = "none";
-}
+       function showPrevious() {
+         currentFlashcardIndex--;
+         if (currentFlashcardIndex < 0) {
+           currentFlashcardIndex = flashcards.length - 1;
+         }
+         questionElement.innerText = flashcards[currentFlashcardIndex].question;
+         answerElement.innerText = flashcards[currentFlashcardIndex].answer;
+         answerElement.style.display = "none";
+       }
 
-flashcardElement.addEventListener("click", function() {
-answerElement.style.display = "block";
-});
+       flashcardElement.addEventListener("click", function() {
+         answerElement.style.display = "block";
+       });
 
-const backButtonElement = document.getElementById("back-button");
-backButtonElement.addEventListener("click", showPrevious);
+       const backButtonElement = document.getElementById("back-button");
+       backButtonElement.addEventListener("click", showPrevious);
 
-showNext();
+       document.addEventListener("keydown", function(event) {
+         if (event.keyCode === 39) { // right arrow key
+           showNext();
+         } else if (event.keyCode === 37) { // left arrow key
+           showPrevious();
+         }
+       });
+
+       showNext();
+
          </script>
        </body>
 <footer> © 2023 Revisionline, All rights reserved.&nbsp;&nbsp;&nbsp;<a href="mailto:info@revisionline.co.uk" class="contact-button">E- mail</a></footer>
